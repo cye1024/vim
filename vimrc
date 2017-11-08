@@ -76,6 +76,22 @@ Plugin 'mileszs/ack.vim'
 " 折叠修复
 Plugin 'tmhedberg/SimpylFold'
 
+" 文件查找
+Plugin 'https://github.com/kien/ctrlp.vim'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*    " MacOSX/Linux
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+"let g:ctrlp_user_command = 'find %s -type f'
+
+" minibuffer
+Plugin 'https://github.com/fholgado/minibufexpl.vim'
+
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -113,7 +129,7 @@ set ruler
 set number
 " 高亮显示当前行/列
 set cursorline
-" set cursorcolumn
+"set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
 
@@ -198,6 +214,8 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
+" 自动开启
+" autocmd VimEnter * NERDTree
 
 " 实时搜索
 set incsearch
@@ -246,8 +264,8 @@ nmap <F5> :Ack<space>
 nmap <F9> :TagbarToggle<CR>
 
 " 切换buffer
-" nmap <Leader>bn :bn<CR>
-" nmap <Leader>bp :bp<CR>
+nmap <Leader>bn :bn<CR>
+nmap <Leader>bp :bp<CR>
 
 " 启动时自动focus
 let g:tagbar_autofocus = 1
